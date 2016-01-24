@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@android:id/tabhost"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColorPrimary"
+                android:weightSum="5"
+                android:tabStripEnabled="false"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:layout_weight="1">
+
+            </LinearLayout>
+        </LinearLayout>
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <!--여기부터 xml 따로 뺄 것-->
+
+            <!--// 뺀 부분이 적용되는건 여기까지 -->
+        </FrameLayout>
+    </LinearLayout>
+</TabHost>
