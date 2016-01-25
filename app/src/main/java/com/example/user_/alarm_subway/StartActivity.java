@@ -15,6 +15,11 @@ import android.widget.TabWidget;
 public class StartActivity extends TabActivity {
     TabHost mTab;
 
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +33,8 @@ public class StartActivity extends TabActivity {
         LayoutInflater.from(this).inflate(R.layout.activity_start,
                 mTab.getTabContentView(), true);
 
+        setTitle("My new title");                       //actionBar 설정
+        getActionBar().setIcon(R.drawable.ic_logo_white);
 
         // 위에서 선언한 탭스펙을 TabHost의 newTabSpec 메서드로 생성합니다.
         // 괄호 안에 생성자 인수를 지정하며, .setIndicator("탭에 출력될 글자"),
@@ -38,8 +45,8 @@ public class StartActivity extends TabActivity {
         TabHost mTabHost = getTabHost();
         TabWidget tabWidget = mTabHost.getTabWidget();
 
-        //검색 탭위젯
-        Intent intent01 = new Intent().setClass(this, AlarmList.class);
+        // (1)검색 탭위젯
+        Intent intent01 = new Intent().setClass(this, SearchImg.class);
         ///담을 이미지 설정
         ImageView tabwidget01 = new ImageView(this);
         tabwidget01.setImageResource(R.drawable.tab_widget01);
@@ -54,8 +61,8 @@ public class StartActivity extends TabActivity {
 
 
 
-        // 즐겨찾기 탭위젯
-        Intent intent02 = new Intent().setClass(this, SearchImg.class);
+        // (2)즐겨찾기 탭위젯
+        Intent intent02 = new Intent().setClass(this, AlarmList.class);
         ImageView tabwidget02 = new ImageView(this);
         tabwidget02.setImageResource(R.drawable.tab_widget02);
         mTab.addTab(mTab.newTabSpec("tab2")
@@ -65,7 +72,7 @@ public class StartActivity extends TabActivity {
         mTab.getTabWidget().setCurrentTab(1);
 
 
-        // 설정 탭위젯
+        // (3)설정 탭위젯
         Intent intent03 = new Intent().setClass(this, AlarmSet.class);
         ImageView tabwidget03 = new ImageView(this);
         tabwidget03.setImageResource(R.drawable.tab_widget03);
@@ -92,6 +99,15 @@ public class StartActivity extends TabActivity {
         //tabWidget.getChildAt(4).setBackgroundResource(R.drawable.tab_bg);
 
         mTab.getTabWidget().getChildAt(4).setClickable(false);      //탭5 비활성화
+
+        //6번째 탭웨젯(비활성화)
+        Intent intent06 = new Intent().setClass(this, StartActivity.class);
+        mTab.addTab(mTab.newTabSpec("tab6")
+                .setIndicator(new LinearLayout(this))
+                .setContent(intent06));
+        //tabWidget.getChildAt(4).setBackgroundResource(R.drawable.tab_bg);
+
+        mTab.getTabWidget().getChildAt(4).setClickable(false);      //탭6 비활성화
 
         tabWidget.setBackgroundResource(R.drawable.tab_bg);         //탭구분 없앰(배경 한번에 설정)
         mTab.getTabWidget().getLayoutParams().height = 80;          // 탭위젯 높이 설정
